@@ -1,0 +1,34 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Adls_rawfile_customer",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          C_CUSTKEY as string,",
+				"          C_NAME as string,",
+				"          C_ADDRESS as string,",
+				"          C_NATIONKEY as string,",
+				"          C_PHONE as string,",
+				"          C_ACCTBAL as string,",
+				"          C_MKTSEGMENT as string,",
+				"          C_COMMENT as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1"
+			]
+		}
+	}
+}

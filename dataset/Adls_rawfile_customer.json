@@ -1,0 +1,56 @@
+{
+	"name": "Adls_rawfile_customer",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_adls_rawfile",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "customer.csv",
+				"fileSystem": "rawfile"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "C_CUSTKEY",
+				"type": "String"
+			},
+			{
+				"name": "C_NAME",
+				"type": "String"
+			},
+			{
+				"name": "C_ADDRESS",
+				"type": "String"
+			},
+			{
+				"name": "C_NATIONKEY",
+				"type": "String"
+			},
+			{
+				"name": "C_PHONE",
+				"type": "String"
+			},
+			{
+				"name": "C_ACCTBAL",
+				"type": "String"
+			},
+			{
+				"name": "C_MKTSEGMENT",
+				"type": "String"
+			},
+			{
+				"name": "C_COMMENT",
+				"type": "String"
+			}
+		]
+	}
+}
