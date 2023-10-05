@@ -61,7 +61,71 @@
 					"name": "Supplier"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText1",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				},
+				{
+					"dataset": {
+						"referenceName": "DelimitedText1",
+						"type": "DatasetReference"
+					},
+					"name": "sink2"
+				},
+				{
+					"dataset": {
+						"referenceName": "DelimitedText1",
+						"type": "DatasetReference"
+					},
+					"name": "sink3"
+				},
+				{
+					"dataset": {
+						"referenceName": "DelimitedText1",
+						"type": "DatasetReference"
+					},
+					"name": "sink4"
+				},
+				{
+					"dataset": {
+						"referenceName": "DelimitedText1",
+						"type": "DatasetReference"
+					},
+					"name": "sink5"
+				},
+				{
+					"dataset": {
+						"referenceName": "DelimitedText1",
+						"type": "DatasetReference"
+					},
+					"name": "sink6"
+				},
+				{
+					"dataset": {
+						"referenceName": "DelimitedText1",
+						"type": "DatasetReference"
+					},
+					"name": "sink7"
+				},
+				{
+					"dataset": {
+						"referenceName": "DelimitedText1",
+						"type": "DatasetReference"
+					},
+					"name": "sink8"
+				},
+				{
+					"dataset": {
+						"referenceName": "DelimitedText1",
+						"type": "DatasetReference"
+					},
+					"name": "sink9"
+				}
+			],
 			"transformations": [
 				{
 					"name": "derivedColumn1"
@@ -89,6 +153,9 @@
 				},
 				{
 					"name": "returnflagQ6"
+				},
+				{
+					"name": "linestatusQ6"
 				}
 			],
 			"scriptLines": [
@@ -231,7 +298,51 @@
 				"          {average quantity} = avg(L_QUANTITY),",
 				"          { average extended price} = avg(L_EXTENDEDPRICE),",
 				"          { average  discount} = avg(L_DISCOUNT),",
-				"          {count of line items} = count(L_RETURNFLAG)) ~> returnflagQ6"
+				"          {count of line items} = count(L_RETURNFLAG)) ~> returnflagQ6",
+				"derivedColumn2 aggregate(groupBy(L_LINESTATUS),",
+				"     {extended price} = sum(L_EXTENDEDPRICE),",
+				"          {discounted  extended price} = sum(L_EXTENDEDPRICE*(1-L_DISCOUNT)),",
+				"          {discounted  extended price plus tax} = sum(L_EXTENDEDPRICE*(1-L_DISCOUNT)*(1+L_TAX)),",
+				"          {average quantity} = avg(L_QUANTITY),",
+				"          {average extended price} = avg(L_EXTENDEDPRICE),",
+				"          {average  discount} = avg(L_DISCOUNT),",
+				"          {count of line items} = count(L_LINESTATUS)) ~> linestatusQ6",
+				"linestatusQ6 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink2",
+				"returnflagQ6 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink3",
+				"derivedColumn3 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink4",
+				"derivedColumn4 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink5",
+				"derivedColumn5 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink6",
+				"derivedColumn6 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink7",
+				"derivedColumn7 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink8",
+				"derivedColumn8 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink9"
 			]
 		}
 	}
