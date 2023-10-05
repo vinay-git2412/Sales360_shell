@@ -317,7 +317,7 @@
 				"     skipDuplicateMapOutputs: true) ~> sink2",
 				"returnflagQ6 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     partitionFileNames:[''],",
+				"     partitionFileNames:['cghjkhg'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     partitionBy('hash', 1)) ~> sink3",
