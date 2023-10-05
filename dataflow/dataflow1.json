@@ -74,6 +74,18 @@
 				},
 				{
 					"name": "derivedColumn4"
+				},
+				{
+					"name": "derivedColumn5"
+				},
+				{
+					"name": "derivedColumn6"
+				},
+				{
+					"name": "derivedColumn7"
+				},
+				{
+					"name": "derivedColumn8"
 				}
 			],
 			"scriptLines": [
@@ -197,7 +209,18 @@
 				"          O_CUSTKEY = toInteger(O_CUSTKEY),",
 				"          O_TOTALPRICE = toFloat(O_TOTALPRICE),",
 				"          O_ORDERDATE = toDate(O_ORDERDATE, 'mm/dd/yyyy'),",
-				"          O_SHIPPRIORITY = toInteger(O_SHIPPRIORITY)) ~> derivedColumn4"
+				"          O_SHIPPRIORITY = toInteger(O_SHIPPRIORITY)) ~> derivedColumn4",
+				"Part derive(P_PARTKEY = toInteger(P_PARTKEY),",
+				"          P_SIZE = toInteger(P_SIZE),",
+				"          P_RETAILPRICE = toFloat(P_RETAILPRICE)) ~> derivedColumn5",
+				"Partsupp derive(PS_PARTKEY = toInteger(PS_PARTKEY),",
+				"          PS_SUPPKEY = toInteger(PS_SUPPKEY),",
+				"          PS_AVAILQTY = toInteger(PS_AVAILQTY),",
+				"          PS_SUPPLYCOST = toFloat(PS_SUPPLYCOST)) ~> derivedColumn6",
+				"Region derive(R_REGIONKEY = toInteger(R_REGIONKEY)) ~> derivedColumn7",
+				"Supplier derive(S_SUPPKEY = toInteger(S_SUPPKEY),",
+				"          S_NATIONKEY = toInteger(S_NATIONKEY),",
+				"          S_ACCTBAL = toFloat(S_ACCTBAL)) ~> derivedColumn8"
 			]
 		}
 	}
