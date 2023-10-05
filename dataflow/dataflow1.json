@@ -64,66 +64,73 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "DelimitedText1",
+						"referenceName": "Adls_staging",
 						"type": "DatasetReference"
 					},
-					"name": "sink1"
+					"name": "linestatussink"
 				},
 				{
 					"dataset": {
-						"referenceName": "DelimitedText1",
+						"referenceName": "Adls_staging",
 						"type": "DatasetReference"
 					},
-					"name": "sink2"
+					"name": "customersink"
 				},
 				{
 					"dataset": {
-						"referenceName": "DelimitedText1",
+						"referenceName": "Adls_staging",
 						"type": "DatasetReference"
 					},
-					"name": "sink3"
+					"name": "linestatussink2"
 				},
 				{
 					"dataset": {
-						"referenceName": "DelimitedText1",
+						"referenceName": "Adls_staging",
 						"type": "DatasetReference"
 					},
-					"name": "sink4"
+					"name": "nationsink"
 				},
 				{
 					"dataset": {
-						"referenceName": "DelimitedText1",
+						"referenceName": "Adls_staging",
 						"type": "DatasetReference"
 					},
-					"name": "sink5"
+					"name": "ordersink"
 				},
 				{
 					"dataset": {
-						"referenceName": "DelimitedText1",
+						"referenceName": "Adls_staging",
 						"type": "DatasetReference"
 					},
-					"name": "sink6"
+					"name": "partsink"
 				},
 				{
 					"dataset": {
-						"referenceName": "DelimitedText1",
+						"referenceName": "Adls_staging",
 						"type": "DatasetReference"
 					},
-					"name": "sink7"
+					"name": "partsuppsink"
 				},
 				{
 					"dataset": {
-						"referenceName": "DelimitedText1",
+						"referenceName": "Adls_staging",
 						"type": "DatasetReference"
 					},
-					"name": "sink8"
+					"name": "regionsink"
 				},
 				{
 					"dataset": {
-						"referenceName": "DelimitedText1",
+						"referenceName": "Adls_staging",
 						"type": "DatasetReference"
 					},
-					"name": "sink9"
+					"name": "suppliersink"
+				},
+				{
+					"dataset": {
+						"referenceName": "Adls_staging",
+						"type": "DatasetReference"
+					},
+					"name": "linestatussink3"
 				}
 			],
 			"transformations": [
@@ -309,42 +316,64 @@
 				"          {count of line items} = count(L_LINESTATUS)) ~> linestatusQ6",
 				"linestatusQ6 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1",
-				"derivedColumn1 sink(allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink2",
-				"returnflagQ6 sink(allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     partitionFileNames:['cghjkhg'],",
+				"     partitionFileNames:['Linestatusgroupbylinestatus'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     partitionBy('hash', 1)) ~> sink3",
+				"     partitionBy('hash', 1)) ~> linestatussink",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['Customer'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> customersink",
+				"returnflagQ6 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['Linestatusgroupbyreturnflag'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> linestatussink2",
 				"derivedColumn3 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     partitionFileNames:['Nation'],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink4",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> nationsink",
 				"derivedColumn4 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     partitionFileNames:['Order'],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink5",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> ordersink",
 				"derivedColumn5 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     partitionFileNames:['Part'],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink6",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> partsink",
 				"derivedColumn6 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     partitionFileNames:['Partsupp'],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink7",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> partsuppsink",
 				"derivedColumn7 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     partitionFileNames:['Region'],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink8",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> regionsink",
 				"derivedColumn8 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     partitionFileNames:['Supplier'],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink9"
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> suppliersink",
+				"derivedColumn2 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['linestatus'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> linestatussink3"
 			]
 		}
 	}
