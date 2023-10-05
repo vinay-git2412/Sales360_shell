@@ -1,0 +1,88 @@
+{
+	"name": "Adls_lineitem",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_adls_rawfile",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "lineitem.csv",
+				"fileSystem": "rawfile"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "L_ORDERKEY",
+				"type": "String"
+			},
+			{
+				"name": "L_PARTKEY",
+				"type": "String"
+			},
+			{
+				"name": "L_SUPPKEY",
+				"type": "String"
+			},
+			{
+				"name": "L_LINENUMBER",
+				"type": "String"
+			},
+			{
+				"name": "L_QUANTITY",
+				"type": "String"
+			},
+			{
+				"name": "L_EXTENDEDPRICE",
+				"type": "String"
+			},
+			{
+				"name": "L_DISCOUNT",
+				"type": "String"
+			},
+			{
+				"name": "L_TAX",
+				"type": "String"
+			},
+			{
+				"name": "L_RETURNFLAG",
+				"type": "String"
+			},
+			{
+				"name": "L_LINESTATUS",
+				"type": "String"
+			},
+			{
+				"name": "L_SHIPDATE",
+				"type": "String"
+			},
+			{
+				"name": "L_COMMITDATE",
+				"type": "String"
+			},
+			{
+				"name": "L_RECEIPTDATE",
+				"type": "String"
+			},
+			{
+				"name": "L_SHIPINSTRUCT",
+				"type": "String"
+			},
+			{
+				"name": "L_SHIPMODE",
+				"type": "String"
+			},
+			{
+				"name": "L_COMMENT",
+				"type": "String"
+			}
+		]
+	}
+}

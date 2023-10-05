@@ -1,0 +1,44 @@
+{
+	"name": "Adls_partsupp",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_adls_rawfile",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "partsupp.csv",
+				"fileSystem": "rawfile"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "PS_PARTKEY",
+				"type": "String"
+			},
+			{
+				"name": "PS_SUPPKEY",
+				"type": "String"
+			},
+			{
+				"name": "PS_AVAILQTY",
+				"type": "String"
+			},
+			{
+				"name": "PS_SUPPLYCOST",
+				"type": "String"
+			},
+			{
+				"name": "PS_COMMENT",
+				"type": "String"
+			}
+		]
+	}
+}

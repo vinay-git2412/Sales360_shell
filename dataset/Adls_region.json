@@ -1,0 +1,36 @@
+{
+	"name": "Adls_region",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_adls_rawfile",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "region.csv",
+				"fileSystem": "rawfile"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "R_REGIONKEY",
+				"type": "String"
+			},
+			{
+				"name": "R_NAME",
+				"type": "String"
+			},
+			{
+				"name": "R_COMMENT",
+				"type": "String"
+			}
+		]
+	}
+}

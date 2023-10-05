@@ -1,0 +1,40 @@
+{
+	"name": "Nation",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_adls_rawfile",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "nation.csv",
+				"fileSystem": "rawfile"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "N_NATIONKEY",
+				"type": "String"
+			},
+			{
+				"name": "N_NAME",
+				"type": "String"
+			},
+			{
+				"name": "N_REGIONKEY",
+				"type": "String"
+			},
+			{
+				"name": "N_COMMENT",
+				"type": "String"
+			}
+		]
+	}
+}

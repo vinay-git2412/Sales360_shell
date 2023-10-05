@@ -9,7 +9,56 @@
 						"referenceName": "Adls_rawfile_customer",
 						"type": "DatasetReference"
 					},
-					"name": "source1"
+					"name": "Customer"
+				},
+				{
+					"dataset": {
+						"referenceName": "Adls_lineitem",
+						"type": "DatasetReference"
+					},
+					"name": "Lineitem"
+				},
+				{
+					"dataset": {
+						"referenceName": "Nation",
+						"type": "DatasetReference"
+					},
+					"name": "Nation"
+				},
+				{
+					"dataset": {
+						"referenceName": "Adls_orders",
+						"type": "DatasetReference"
+					},
+					"name": "Orders"
+				},
+				{
+					"dataset": {
+						"referenceName": "Adls_part",
+						"type": "DatasetReference"
+					},
+					"name": "Part"
+				},
+				{
+					"dataset": {
+						"referenceName": "Adls_partsupp",
+						"type": "DatasetReference"
+					},
+					"name": "Partsupp"
+				},
+				{
+					"dataset": {
+						"referenceName": "Adls_region",
+						"type": "DatasetReference"
+					},
+					"name": "Region"
+				},
+				{
+					"dataset": {
+						"referenceName": "Adls_supplier",
+						"type": "DatasetReference"
+					},
+					"name": "Supplier"
 				}
 			],
 			"sinks": [],
@@ -27,7 +76,95 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> source1"
+				"     ignoreNoFilesFound: false) ~> Customer",
+				"source(output(",
+				"          L_ORDERKEY as string,",
+				"          L_PARTKEY as string,",
+				"          L_SUPPKEY as string,",
+				"          L_LINENUMBER as string,",
+				"          L_QUANTITY as string,",
+				"          L_EXTENDEDPRICE as string,",
+				"          L_DISCOUNT as string,",
+				"          L_TAX as string,",
+				"          L_RETURNFLAG as string,",
+				"          L_LINESTATUS as string,",
+				"          L_SHIPDATE as string,",
+				"          L_COMMITDATE as string,",
+				"          L_RECEIPTDATE as string,",
+				"          L_SHIPINSTRUCT as string,",
+				"          L_SHIPMODE as string,",
+				"          L_COMMENT as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> Lineitem",
+				"source(output(",
+				"          N_NATIONKEY as string,",
+				"          N_NAME as string,",
+				"          N_REGIONKEY as string,",
+				"          N_COMMENT as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> Nation",
+				"source(output(",
+				"          O_ORDERKEY as string,",
+				"          O_CUSTKEY as string,",
+				"          O_ORDERSTATUS as string,",
+				"          O_TOTALPRICE as string,",
+				"          O_ORDERDATE as string,",
+				"          O_ORDERPRIORITY as string,",
+				"          O_CLERK as string,",
+				"          O_SHIPPRIORITY as string,",
+				"          O_COMMENT as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> Orders",
+				"source(output(",
+				"          P_PARTKEY as string,",
+				"          P_NAME as string,",
+				"          P_MFGR as string,",
+				"          P_BRAND as string,",
+				"          P_TYPE as string,",
+				"          P_SIZE as string,",
+				"          P_CONTAINER as string,",
+				"          P_RETAILPRICE as string,",
+				"          P_COMMENT as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> Part",
+				"source(output(",
+				"          PS_PARTKEY as string,",
+				"          PS_SUPPKEY as string,",
+				"          PS_AVAILQTY as string,",
+				"          PS_SUPPLYCOST as string,",
+				"          PS_COMMENT as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> Partsupp",
+				"source(output(",
+				"          R_REGIONKEY as string,",
+				"          R_NAME as string,",
+				"          R_COMMENT as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> Region",
+				"source(output(",
+				"          S_SUPPKEY as string,",
+				"          S_NAME as string,",
+				"          S_ADDRESS as string,",
+				"          S_NATIONKEY as string,",
+				"          S_PHONE as string,",
+				"          S_ACCTBAL as string,",
+				"          S_COMMENT as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> Supplier"
 			]
 		}
 	}
