@@ -1,5 +1,5 @@
 {
-	"name": "Nation",
+	"name": "Adls_nation",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_adls_rawfile",

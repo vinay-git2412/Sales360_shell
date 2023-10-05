@@ -20,7 +20,7 @@
 				},
 				{
 					"dataset": {
-						"referenceName": "Nation",
+						"referenceName": "Adls_nation",
 						"type": "DatasetReference"
 					},
 					"name": "Nation"
@@ -62,7 +62,20 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "derivedColumn2"
+				},
+				{
+					"name": "derivedColumn3"
+				},
+				{
+					"name": "derivedColumn4"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          C_CUSTKEY as string,",
@@ -164,7 +177,27 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> Supplier"
+				"     ignoreNoFilesFound: false) ~> Supplier",
+				"Customer derive(C_CUSTKEY = toInteger(C_CUSTKEY),",
+				"          C_NATIONKEY = toInteger(C_NATIONKEY),",
+				"          C_ACCTBAL = toInteger(C_ACCTBAL)) ~> derivedColumn1",
+				"Lineitem derive(L_ORDERKEY = toInteger(L_ORDERKEY),",
+				"          L_PARTKEY = toInteger(L_PARTKEY),",
+				"          L_SUPPKEY = toInteger(L_SUPPKEY),",
+				"          L_LINENUMBER = toInteger(L_LINENUMBER),",
+				"          L_QUANTITY = toInteger(L_QUANTITY),",
+				"          L_EXTENDEDPRICE = toInteger(L_EXTENDEDPRICE),",
+				"          L_DISCOUNT = toInteger(L_DISCOUNT),",
+				"          L_TAX = toInteger(L_TAX),",
+				"          L_SHIPDATE = toDate(L_SHIPDATE, 'mm/dd/yyyy'),",
+				"          L_COMMITDATE = toDate(L_COMMITDATE, 'mm/dd/yyyy'),",
+				"          L_RECEIPTDATE = toDate(L_RECEIPTDATE, 'mm/dd/yyyy')) ~> derivedColumn2",
+				"Nation derive(N_NATIONKEY = toInteger(N_NATIONKEY)) ~> derivedColumn3",
+				"Orders derive(O_ORDERKEY = toInteger(O_ORDERKEY),",
+				"          O_CUSTKEY = toInteger(O_CUSTKEY),",
+				"          O_TOTALPRICE = toFloat(O_TOTALPRICE),",
+				"          O_ORDERDATE = toDate(O_ORDERDATE, 'mm/dd/yyyy'),",
+				"          O_SHIPPRIORITY = toInteger(O_SHIPPRIORITY)) ~> derivedColumn4"
 			]
 		}
 	}
