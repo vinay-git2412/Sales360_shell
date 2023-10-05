@@ -86,6 +86,9 @@
 				},
 				{
 					"name": "derivedColumn8"
+				},
+				{
+					"name": "derivedColumn9"
 				}
 			],
 			"scriptLines": [
@@ -220,7 +223,8 @@
 				"Region derive(R_REGIONKEY = toInteger(R_REGIONKEY)) ~> derivedColumn7",
 				"Supplier derive(S_SUPPKEY = toInteger(S_SUPPKEY),",
 				"          S_NATIONKEY = toInteger(S_NATIONKEY),",
-				"          S_ACCTBAL = toFloat(S_ACCTBAL)) ~> derivedColumn8"
+				"          S_ACCTBAL = toFloat(S_ACCTBAL)) ~> derivedColumn8",
+				"derivedColumn2 derive(L_SHIPDATE = addDays('30-01-1998', -120)) ~> derivedColumn9"
 			]
 		}
 	}
