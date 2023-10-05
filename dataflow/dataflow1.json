@@ -88,7 +88,7 @@
 					"name": "derivedColumn8"
 				},
 				{
-					"name": "derivedColumn9"
+					"name": "returnflagQ6"
 				}
 			],
 			"scriptLines": [
@@ -201,9 +201,9 @@
 				"          L_SUPPKEY = toInteger(L_SUPPKEY),",
 				"          L_LINENUMBER = toInteger(L_LINENUMBER),",
 				"          L_QUANTITY = toInteger(L_QUANTITY),",
-				"          L_EXTENDEDPRICE = toInteger(L_EXTENDEDPRICE),",
-				"          L_DISCOUNT = toInteger(L_DISCOUNT),",
-				"          L_TAX = toInteger(L_TAX),",
+				"          L_EXTENDEDPRICE = toFloat(L_EXTENDEDPRICE),",
+				"          L_DISCOUNT = toFloat(L_DISCOUNT),",
+				"          L_TAX = toFloat(L_TAX),",
 				"          L_SHIPDATE = toDate(L_SHIPDATE, 'mm/dd/yyyy'),",
 				"          L_COMMITDATE = toDate(L_COMMITDATE, 'mm/dd/yyyy'),",
 				"          L_RECEIPTDATE = toDate(L_RECEIPTDATE, 'mm/dd/yyyy')) ~> derivedColumn2",
@@ -224,7 +224,14 @@
 				"Supplier derive(S_SUPPKEY = toInteger(S_SUPPKEY),",
 				"          S_NATIONKEY = toInteger(S_NATIONKEY),",
 				"          S_ACCTBAL = toFloat(S_ACCTBAL)) ~> derivedColumn8",
-				"derivedColumn2 derive(L_SHIPDATE = addDays('30-01-1998', -120)) ~> derivedColumn9"
+				"derivedColumn2 aggregate(groupBy(L_RETURNFLAG),",
+				"     { extended price} = sum(L_EXTENDEDPRICE),",
+				"          { discounted  extended price} = sum(L_EXTENDEDPRICE*(1-L_DISCOUNT)),",
+				"          {discounted extended price plus tax} = sum(L_EXTENDEDPRICE*(1-L_DISCOUNT)*(1+L_TAX)),",
+				"          {average quantity} = avg(L_QUANTITY),",
+				"          { average extended price} = avg(L_EXTENDEDPRICE),",
+				"          { average  discount} = avg(L_DISCOUNT),",
+				"          {count of line items} = count(L_RETURNFLAG)) ~> returnflagQ6"
 			]
 		}
 	}
