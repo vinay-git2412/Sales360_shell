@@ -57,6 +57,384 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/Adls_lineitem')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_adls_rawfile",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "lineitem.csv",
+						"fileSystem": "rawfile"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "L_ORDERKEY",
+						"type": "String"
+					},
+					{
+						"name": "L_PARTKEY",
+						"type": "String"
+					},
+					{
+						"name": "L_SUPPKEY",
+						"type": "String"
+					},
+					{
+						"name": "L_LINENUMBER",
+						"type": "String"
+					},
+					{
+						"name": "L_QUANTITY",
+						"type": "String"
+					},
+					{
+						"name": "L_EXTENDEDPRICE",
+						"type": "String"
+					},
+					{
+						"name": "L_DISCOUNT",
+						"type": "String"
+					},
+					{
+						"name": "L_TAX",
+						"type": "String"
+					},
+					{
+						"name": "L_RETURNFLAG",
+						"type": "String"
+					},
+					{
+						"name": "L_LINESTATUS",
+						"type": "String"
+					},
+					{
+						"name": "L_SHIPDATE",
+						"type": "String"
+					},
+					{
+						"name": "L_COMMITDATE",
+						"type": "String"
+					},
+					{
+						"name": "L_RECEIPTDATE",
+						"type": "String"
+					},
+					{
+						"name": "L_SHIPINSTRUCT",
+						"type": "String"
+					},
+					{
+						"name": "L_SHIPMODE",
+						"type": "String"
+					},
+					{
+						"name": "L_COMMENT",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_adls_rawfile')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Adls_nation')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_adls_rawfile",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "nation.csv",
+						"fileSystem": "rawfile"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "N_NATIONKEY",
+						"type": "String"
+					},
+					{
+						"name": "N_NAME",
+						"type": "String"
+					},
+					{
+						"name": "N_REGIONKEY",
+						"type": "String"
+					},
+					{
+						"name": "N_COMMENT",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_adls_rawfile')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Adls_orders')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_adls_rawfile",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "orders.csv",
+						"fileSystem": "rawfile"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "O_ORDERKEY",
+						"type": "String"
+					},
+					{
+						"name": "O_CUSTKEY",
+						"type": "String"
+					},
+					{
+						"name": "O_ORDERSTATUS",
+						"type": "String"
+					},
+					{
+						"name": "O_TOTALPRICE",
+						"type": "String"
+					},
+					{
+						"name": "O_ORDERDATE",
+						"type": "String"
+					},
+					{
+						"name": "O_ORDERPRIORITY",
+						"type": "String"
+					},
+					{
+						"name": "O_CLERK",
+						"type": "String"
+					},
+					{
+						"name": "O_SHIPPRIORITY",
+						"type": "String"
+					},
+					{
+						"name": "O_COMMENT",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_adls_rawfile')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Adls_part')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_adls_rawfile",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "part.csv",
+						"fileSystem": "rawfile"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "P_PARTKEY",
+						"type": "String"
+					},
+					{
+						"name": "P_NAME",
+						"type": "String"
+					},
+					{
+						"name": "P_MFGR",
+						"type": "String"
+					},
+					{
+						"name": "P_BRAND",
+						"type": "String"
+					},
+					{
+						"name": "P_TYPE",
+						"type": "String"
+					},
+					{
+						"name": "P_SIZE",
+						"type": "String"
+					},
+					{
+						"name": "P_CONTAINER",
+						"type": "String"
+					},
+					{
+						"name": "P_RETAILPRICE",
+						"type": "String"
+					},
+					{
+						"name": "P_COMMENT",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_adls_rawfile')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Adls_partsupp')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_adls_rawfile",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "partsupp.csv",
+						"fileSystem": "rawfile"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "PS_PARTKEY",
+						"type": "String"
+					},
+					{
+						"name": "PS_SUPPKEY",
+						"type": "String"
+					},
+					{
+						"name": "PS_AVAILQTY",
+						"type": "String"
+					},
+					{
+						"name": "PS_SUPPLYCOST",
+						"type": "String"
+					},
+					{
+						"name": "PS_COMMENT",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_adls_rawfile')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Adls_rawfile_customer')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_adls_rawfile",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "customer.csv",
+						"fileSystem": "rawfile"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "C_CUSTKEY",
+						"type": "String"
+					},
+					{
+						"name": "C_NAME",
+						"type": "String"
+					},
+					{
+						"name": "C_ADDRESS",
+						"type": "String"
+					},
+					{
+						"name": "C_NATIONKEY",
+						"type": "String"
+					},
+					{
+						"name": "C_PHONE",
+						"type": "String"
+					},
+					{
+						"name": "C_ACCTBAL",
+						"type": "String"
+					},
+					{
+						"name": "C_MKTSEGMENT",
+						"type": "String"
+					},
+					{
+						"name": "C_COMMENT",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_adls_rawfile')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/Adls_rawfiles')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -77,7 +455,138 @@
 					"firstRowAsHeader": true,
 					"quoteChar": "\""
 				},
-				"schema": []
+				"schema": [
+					{
+						"name": "C_CUSTKEY",
+						"type": "String"
+					},
+					{
+						"name": "C_NAME",
+						"type": "String"
+					},
+					{
+						"name": "C_ADDRESS",
+						"type": "String"
+					},
+					{
+						"name": "C_NATIONKEY",
+						"type": "String"
+					},
+					{
+						"name": "C_PHONE",
+						"type": "String"
+					},
+					{
+						"name": "C_ACCTBAL",
+						"type": "String"
+					},
+					{
+						"name": "C_MKTSEGMENT",
+						"type": "String"
+					},
+					{
+						"name": "C_COMMENT",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_adls_rawfile')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Adls_region')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_adls_rawfile",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "region.csv",
+						"fileSystem": "rawfile"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "R_REGIONKEY",
+						"type": "String"
+					},
+					{
+						"name": "R_NAME",
+						"type": "String"
+					},
+					{
+						"name": "R_COMMENT",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_adls_rawfile')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Adls_supplier')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_adls_rawfile",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "supplier.csv",
+						"fileSystem": "rawfile"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "S_SUPPKEY",
+						"type": "String"
+					},
+					{
+						"name": "S_NAME",
+						"type": "String"
+					},
+					{
+						"name": "S_ADDRESS",
+						"type": "String"
+					},
+					{
+						"name": "S_NATIONKEY",
+						"type": "String"
+					},
+					{
+						"name": "S_PHONE",
+						"type": "String"
+					},
+					{
+						"name": "S_ACCTBAL",
+						"type": "String"
+					},
+					{
+						"name": "S_COMMENT",
+						"type": "String"
+					}
+				]
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/ls_adls_rawfile')]"
@@ -142,6 +651,395 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/ls_blobsa')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DelimitedText1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_blobsa",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "stagingfiles"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_blobsa')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/dataflow1')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "Adls_rawfile_customer",
+								"type": "DatasetReference"
+							},
+							"name": "Customer"
+						},
+						{
+							"dataset": {
+								"referenceName": "Adls_lineitem",
+								"type": "DatasetReference"
+							},
+							"name": "Lineitem"
+						},
+						{
+							"dataset": {
+								"referenceName": "Adls_nation",
+								"type": "DatasetReference"
+							},
+							"name": "Nation"
+						},
+						{
+							"dataset": {
+								"referenceName": "Adls_orders",
+								"type": "DatasetReference"
+							},
+							"name": "Orders"
+						},
+						{
+							"dataset": {
+								"referenceName": "Adls_part",
+								"type": "DatasetReference"
+							},
+							"name": "Part"
+						},
+						{
+							"dataset": {
+								"referenceName": "Adls_partsupp",
+								"type": "DatasetReference"
+							},
+							"name": "Partsupp"
+						},
+						{
+							"dataset": {
+								"referenceName": "Adls_region",
+								"type": "DatasetReference"
+							},
+							"name": "Region"
+						},
+						{
+							"dataset": {
+								"referenceName": "Adls_supplier",
+								"type": "DatasetReference"
+							},
+							"name": "Supplier"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "DelimitedText1",
+								"type": "DatasetReference"
+							},
+							"name": "sink1"
+						},
+						{
+							"dataset": {
+								"referenceName": "DelimitedText1",
+								"type": "DatasetReference"
+							},
+							"name": "sink2"
+						},
+						{
+							"dataset": {
+								"referenceName": "DelimitedText1",
+								"type": "DatasetReference"
+							},
+							"name": "sink3"
+						},
+						{
+							"dataset": {
+								"referenceName": "DelimitedText1",
+								"type": "DatasetReference"
+							},
+							"name": "sink4"
+						},
+						{
+							"dataset": {
+								"referenceName": "DelimitedText1",
+								"type": "DatasetReference"
+							},
+							"name": "sink5"
+						},
+						{
+							"dataset": {
+								"referenceName": "DelimitedText1",
+								"type": "DatasetReference"
+							},
+							"name": "sink6"
+						},
+						{
+							"dataset": {
+								"referenceName": "DelimitedText1",
+								"type": "DatasetReference"
+							},
+							"name": "sink7"
+						},
+						{
+							"dataset": {
+								"referenceName": "DelimitedText1",
+								"type": "DatasetReference"
+							},
+							"name": "sink8"
+						},
+						{
+							"dataset": {
+								"referenceName": "DelimitedText1",
+								"type": "DatasetReference"
+							},
+							"name": "sink9"
+						}
+					],
+					"transformations": [
+						{
+							"name": "derivedColumn1"
+						},
+						{
+							"name": "derivedColumn2"
+						},
+						{
+							"name": "derivedColumn3"
+						},
+						{
+							"name": "derivedColumn4"
+						},
+						{
+							"name": "derivedColumn5"
+						},
+						{
+							"name": "derivedColumn6"
+						},
+						{
+							"name": "derivedColumn7"
+						},
+						{
+							"name": "derivedColumn8"
+						},
+						{
+							"name": "returnflagQ6"
+						},
+						{
+							"name": "linestatusQ6"
+						}
+					],
+					"scriptLines": [
+						"source(output(",
+						"          C_CUSTKEY as string,",
+						"          C_NAME as string,",
+						"          C_ADDRESS as string,",
+						"          C_NATIONKEY as string,",
+						"          C_PHONE as string,",
+						"          C_ACCTBAL as string,",
+						"          C_MKTSEGMENT as string,",
+						"          C_COMMENT as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> Customer",
+						"source(output(",
+						"          L_ORDERKEY as string,",
+						"          L_PARTKEY as string,",
+						"          L_SUPPKEY as string,",
+						"          L_LINENUMBER as string,",
+						"          L_QUANTITY as string,",
+						"          L_EXTENDEDPRICE as string,",
+						"          L_DISCOUNT as string,",
+						"          L_TAX as string,",
+						"          L_RETURNFLAG as string,",
+						"          L_LINESTATUS as string,",
+						"          L_SHIPDATE as string,",
+						"          L_COMMITDATE as string,",
+						"          L_RECEIPTDATE as string,",
+						"          L_SHIPINSTRUCT as string,",
+						"          L_SHIPMODE as string,",
+						"          L_COMMENT as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> Lineitem",
+						"source(output(",
+						"          N_NATIONKEY as string,",
+						"          N_NAME as string,",
+						"          N_REGIONKEY as string,",
+						"          N_COMMENT as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> Nation",
+						"source(output(",
+						"          O_ORDERKEY as string,",
+						"          O_CUSTKEY as string,",
+						"          O_ORDERSTATUS as string,",
+						"          O_TOTALPRICE as string,",
+						"          O_ORDERDATE as string,",
+						"          O_ORDERPRIORITY as string,",
+						"          O_CLERK as string,",
+						"          O_SHIPPRIORITY as string,",
+						"          O_COMMENT as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> Orders",
+						"source(output(",
+						"          P_PARTKEY as string,",
+						"          P_NAME as string,",
+						"          P_MFGR as string,",
+						"          P_BRAND as string,",
+						"          P_TYPE as string,",
+						"          P_SIZE as string,",
+						"          P_CONTAINER as string,",
+						"          P_RETAILPRICE as string,",
+						"          P_COMMENT as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> Part",
+						"source(output(",
+						"          PS_PARTKEY as string,",
+						"          PS_SUPPKEY as string,",
+						"          PS_AVAILQTY as string,",
+						"          PS_SUPPLYCOST as string,",
+						"          PS_COMMENT as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> Partsupp",
+						"source(output(",
+						"          R_REGIONKEY as string,",
+						"          R_NAME as string,",
+						"          R_COMMENT as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> Region",
+						"source(output(",
+						"          S_SUPPKEY as string,",
+						"          S_NAME as string,",
+						"          S_ADDRESS as string,",
+						"          S_NATIONKEY as string,",
+						"          S_PHONE as string,",
+						"          S_ACCTBAL as string,",
+						"          S_COMMENT as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> Supplier",
+						"Customer derive(C_CUSTKEY = toInteger(C_CUSTKEY),",
+						"          C_NATIONKEY = toInteger(C_NATIONKEY),",
+						"          C_ACCTBAL = toInteger(C_ACCTBAL)) ~> derivedColumn1",
+						"Lineitem derive(L_ORDERKEY = toInteger(L_ORDERKEY),",
+						"          L_PARTKEY = toInteger(L_PARTKEY),",
+						"          L_SUPPKEY = toInteger(L_SUPPKEY),",
+						"          L_LINENUMBER = toInteger(L_LINENUMBER),",
+						"          L_QUANTITY = toInteger(L_QUANTITY),",
+						"          L_EXTENDEDPRICE = toFloat(L_EXTENDEDPRICE),",
+						"          L_DISCOUNT = toFloat(L_DISCOUNT),",
+						"          L_TAX = toFloat(L_TAX),",
+						"          L_SHIPDATE = toDate(L_SHIPDATE, 'mm/dd/yyyy'),",
+						"          L_COMMITDATE = toDate(L_COMMITDATE, 'mm/dd/yyyy'),",
+						"          L_RECEIPTDATE = toDate(L_RECEIPTDATE, 'mm/dd/yyyy')) ~> derivedColumn2",
+						"Nation derive(N_NATIONKEY = toInteger(N_NATIONKEY)) ~> derivedColumn3",
+						"Orders derive(O_ORDERKEY = toInteger(O_ORDERKEY),",
+						"          O_CUSTKEY = toInteger(O_CUSTKEY),",
+						"          O_TOTALPRICE = toFloat(O_TOTALPRICE),",
+						"          O_ORDERDATE = toDate(O_ORDERDATE, 'mm/dd/yyyy'),",
+						"          O_SHIPPRIORITY = toInteger(O_SHIPPRIORITY)) ~> derivedColumn4",
+						"Part derive(P_PARTKEY = toInteger(P_PARTKEY),",
+						"          P_SIZE = toInteger(P_SIZE),",
+						"          P_RETAILPRICE = toFloat(P_RETAILPRICE)) ~> derivedColumn5",
+						"Partsupp derive(PS_PARTKEY = toInteger(PS_PARTKEY),",
+						"          PS_SUPPKEY = toInteger(PS_SUPPKEY),",
+						"          PS_AVAILQTY = toInteger(PS_AVAILQTY),",
+						"          PS_SUPPLYCOST = toFloat(PS_SUPPLYCOST)) ~> derivedColumn6",
+						"Region derive(R_REGIONKEY = toInteger(R_REGIONKEY)) ~> derivedColumn7",
+						"Supplier derive(S_SUPPKEY = toInteger(S_SUPPKEY),",
+						"          S_NATIONKEY = toInteger(S_NATIONKEY),",
+						"          S_ACCTBAL = toFloat(S_ACCTBAL)) ~> derivedColumn8",
+						"derivedColumn2 aggregate(groupBy(L_RETURNFLAG),",
+						"     { extended price} = sum(L_EXTENDEDPRICE),",
+						"          { discounted  extended price} = sum(L_EXTENDEDPRICE*(1-L_DISCOUNT)),",
+						"          {discounted extended price plus tax} = sum(L_EXTENDEDPRICE*(1-L_DISCOUNT)*(1+L_TAX)),",
+						"          {average quantity} = avg(L_QUANTITY),",
+						"          { average extended price} = avg(L_EXTENDEDPRICE),",
+						"          { average  discount} = avg(L_DISCOUNT),",
+						"          {count of line items} = count(L_RETURNFLAG)) ~> returnflagQ6",
+						"derivedColumn2 aggregate(groupBy(L_LINESTATUS),",
+						"     {extended price} = sum(L_EXTENDEDPRICE),",
+						"          {discounted  extended price} = sum(L_EXTENDEDPRICE*(1-L_DISCOUNT)),",
+						"          {discounted  extended price plus tax} = sum(L_EXTENDEDPRICE*(1-L_DISCOUNT)*(1+L_TAX)),",
+						"          {average quantity} = avg(L_QUANTITY),",
+						"          {average extended price} = avg(L_EXTENDEDPRICE),",
+						"          {average  discount} = avg(L_DISCOUNT),",
+						"          {count of line items} = count(L_LINESTATUS)) ~> linestatusQ6",
+						"linestatusQ6 sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> sink1",
+						"derivedColumn1 sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> sink2",
+						"returnflagQ6 sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> sink3",
+						"derivedColumn3 sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> sink4",
+						"derivedColumn4 sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> sink5",
+						"derivedColumn5 sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> sink6",
+						"derivedColumn6 sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> sink7",
+						"derivedColumn7 sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> sink8",
+						"derivedColumn8 sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> sink9"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/Adls_rawfile_customer')]",
+				"[concat(variables('factoryId'), '/datasets/Adls_lineitem')]",
+				"[concat(variables('factoryId'), '/datasets/Adls_nation')]",
+				"[concat(variables('factoryId'), '/datasets/Adls_orders')]",
+				"[concat(variables('factoryId'), '/datasets/Adls_part')]",
+				"[concat(variables('factoryId'), '/datasets/Adls_partsupp')]",
+				"[concat(variables('factoryId'), '/datasets/Adls_region')]",
+				"[concat(variables('factoryId'), '/datasets/Adls_supplier')]",
+				"[concat(variables('factoryId'), '/datasets/DelimitedText1')]"
 			]
 		},
 		{
@@ -210,6 +1108,51 @@
 								"parameters": {}
 							}
 						]
+					},
+					{
+						"name": "Data flow1",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "dataflow1",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"Customer": {},
+									"Lineitem": {},
+									"Nation": {},
+									"Orders": {},
+									"Part": {},
+									"Partsupp": {},
+									"Region": {},
+									"Supplier": {},
+									"sink1": {},
+									"sink2": {},
+									"sink3": {},
+									"sink4": {},
+									"sink5": {},
+									"sink6": {},
+									"sink7": {},
+									"sink8": {},
+									"sink9": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
 					}
 				],
 				"policy": {
@@ -220,7 +1163,8 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/Blob_storage')]",
-				"[concat(variables('factoryId'), '/datasets/Adls_rawfiles')]"
+				"[concat(variables('factoryId'), '/datasets/Adls_rawfiles')]",
+				"[concat(variables('factoryId'), '/dataflows/dataflow1')]"
 			]
 		}
 	]
