@@ -370,7 +370,7 @@
 				"     partitionBy('hash', 1)) ~> suppliersink",
 				"derivedColumn2 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     partitionFileNames:['linestatus.csv'],",
+				"     partitionFileNames:['linestatus'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     partitionBy('hash', 1)) ~> linestatussink3"
