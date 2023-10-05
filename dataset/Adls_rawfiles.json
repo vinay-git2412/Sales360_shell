@@ -10,7 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "customer.csv",
 				"fileSystem": "rawfile"
 			},
 			"columnDelimiter": ",",
@@ -18,7 +17,40 @@
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
-		"schema": []
+		"schema": [
+			{
+				"name": "C_CUSTKEY",
+				"type": "String"
+			},
+			{
+				"name": "C_NAME",
+				"type": "String"
+			},
+			{
+				"name": "C_ADDRESS",
+				"type": "String"
+			},
+			{
+				"name": "C_NATIONKEY",
+				"type": "String"
+			},
+			{
+				"name": "C_PHONE",
+				"type": "String"
+			},
+			{
+				"name": "C_ACCTBAL",
+				"type": "String"
+			},
+			{
+				"name": "C_MKTSEGMENT",
+				"type": "String"
+			},
+			{
+				"name": "C_COMMENT",
+				"type": "String"
+			}
+		]
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
 }
